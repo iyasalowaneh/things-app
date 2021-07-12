@@ -6,9 +6,9 @@ import ProductsItem from "./ProductItem";
 
 // Styling
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, navigation }) => {
   let productArray = products.map((product) => (
-    <ProductsItem product={product} key={product.id} />
+    <ProductsItem product={product} key={product.id} navigation={navigation} />
   ));
   return <List>{productArray}</List>;
 };

@@ -9,12 +9,14 @@ import ShopItem from "./ShopItem";
 
 import { useSelector } from "react-redux";
 
-const ShopList = () => {
+const ShopList = ({ navigation }) => {
   const shops = useSelector((state) => state.shops.shops);
   const loading = useSelector((state) => state.shops.loading);
   if (loading) return <Spinner />;
 
-  let shopArray = shops.map((shop) => <ShopItem shop={shop} key={shop.id} />);
+  let shopArray = shops.map((shop) => (
+    <ShopItem shop={shop} key={shop.id} navigation={navigation} />
+  ));
   return <List>{shopArray}</List>;
 };
 

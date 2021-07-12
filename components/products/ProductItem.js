@@ -1,16 +1,20 @@
 import React from "react";
 import { Image } from "react-native";
-import { List, ListItem } from "native-base";
+import { List } from "native-base";
 import { ShopItemStyled } from "../../styles";
 
-const ProductsItem = ({ product }) => {
+const ProductsItem = ({ product, navigation }) => {
   return (
     <List>
       <Image
         style={{ width: "10%", height: "10%" }}
         source={{ uri: product.image }}
       />
-      <ShopItemStyled>{product.name}</ShopItemStyled>
+      <ShopItemStyled
+        onPress={() => navigation.navigate("ProductDetail", { product })}
+      >
+        {product.name}
+      </ShopItemStyled>
     </List>
   );
 };

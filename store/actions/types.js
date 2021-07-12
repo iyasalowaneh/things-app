@@ -1,2 +1,3 @@
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const FETCH_SHOPS = "FETCH_SHOPS";
+export const FETCH_CART_ITEMS = "FETCH_CART_ITEMS";

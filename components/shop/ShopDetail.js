@@ -9,11 +9,12 @@ import {
 import { useSelector } from "react-redux";
 import ProductList from "../products/ProductList";
 import { Text } from "react-native";
-const ShopDetail = () => {
+const ShopDetail = ({ navigation, route }) => {
   const loading = useSelector((state) => state.shops.loading);
 
-  const shop = useSelector((state) => state.shops.shops[1]);
+  //const shop = useSelector((state) => state.shops.shops[1]);
   const products = useSelector((state) => state.products.products);
+  const { shop } = route.params;
 
   if (loading) return <Spinner />;
 
@@ -24,12 +25,14 @@ const ShopDetail = () => {
   return (
     <>
       <ShopDetailWrapper>
-        <Text>{shop.name}</Text>
         <ShopDetailImage source={{ uri: shop.image }} />
 
         <ShopDetailTitle>{shop.name}</ShopDetailTitle>
       </ShopDetailWrapper>
-      <ProductList products={productsFromproductStore} />
+      <ProductList
+        navigation={navigation}
+        products={productsFromproductStore}
+      />
     </>
   );
 };

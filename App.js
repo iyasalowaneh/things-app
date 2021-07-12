@@ -1,21 +1,19 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { NativeBaseProvider } from "native-base";
 import { Provider } from "react-redux";
 import store from "./store";
+import { NavigationContainer } from "@react-navigation/native";
+
 //components
-import Home from "./components/Home";
-import ShopList from "./components/shop/ShopList";
-import ShopDetail from "./components/shop/ShopDetail";
+import RootNavigator from "./components/Navigation";
 export default function App() {
   return (
     <Provider store={store}>
       <NativeBaseProvider>
-        <Text>Hello World!!</Text>
-        {/* <Home /> */}
-        {/* <ShopList /> */}
-        <ShopDetail />
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
       </NativeBaseProvider>
     </Provider>
   );
