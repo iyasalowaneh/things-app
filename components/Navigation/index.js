@@ -7,13 +7,16 @@ import Home from "../Home";
 import ShopList from "../shop/ShopList";
 import ShopDetail from "../shop/ShopDetail";
 import ProductDetail from "../products/ProductDetail";
-
+import CartList from "../cart/CartList";
+import CartButton from "../cart/CartButton";
+import Signin from "../users/Signin";
+import Signup from "../users/Signup";
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
     <Navigator
-      initialRouteName="Home"
+      initialRouteName="HOME"
       screenOptions={{
         cardStyle: { backgroundColor: "#ade8f4" },
         headerTintColor: "#03045e",
@@ -26,6 +29,15 @@ const RootNavigator = () => {
       }}
     >
       <Screen name="HOME" component={Home} options={{ headerShown: false }} />
+      <Screen name="Signin" component={Signin} options={{ title: "Signin" }} />
+      <Screen name="Signup" component={Signup} options={{ title: "Signup" }} />
+
+      <Screen
+        name="CartList"
+        component={CartList}
+        options={{ title: "Cart" }}
+      />
+
       <Screen
         name="ShopList"
         component={ShopList}
@@ -34,12 +46,11 @@ const RootNavigator = () => {
       <Screen
         name="ShopDetail"
         component={ShopDetail}
-        options={({ route }) => {
-          const { shop } = route.params;
-          return {
-            title: shop.name,
-          };
-        }}
+        options={({ navigation, route }) => ({
+          title: route.params.shop.name,
+
+          headerRight: () => <CartButton navigation={navigation} />,
+        })}
       />
       <Screen
         name="ProductDetail"

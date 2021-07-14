@@ -16,6 +16,8 @@ const Home = ({ navigation }) => {
         </Text>
 
         <Button onPress={() => navigation.navigate("ShopList")}>SHOPS</Button>
+        <Button onPress={() => navigation.navigate("Signin")}>Signin</Button>
+        <Button onPress={() => navigation.navigate("Signup")}>Signup</Button>
       </Center>
     </ImageBackground>
   );

@@ -14,3 +14,15 @@ export const fetchCartItems = () => {
     }
   };
 };
+export const addItemToCart = (newItem) => ({
+  type: actionTypes.ADD_ITEM,
+  payload: newItem,
+});
+export const removeItemFromCart = (itemId) => ({
+  type: actionTypes.REMOVE_ITEM,
+  payload: {
+    itemId: itemId,
+  },
+});
+
+export const checkoutCart = () => ({ type: actionTypes.CHECKOUT });
